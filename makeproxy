@@ -23,10 +23,10 @@ read authip
 fi
 
 cd /usr/local/etc
-wget https://github.com/mainlyek/3proxy/archive/refs/tags/Anonymous.tar.gz
-tar zxvf Anonymous.tar.gz
-rm Anonymous
-mv Anonymous 3proxy
+wget https://github.com/z3APA3A/3proxy/archive/0.8.12.tar.gz
+tar zxvf 0.8.12.tar.gz
+rm 0.8.12.tar.gz
+mv 3proxy-0.8.12 3proxy
 cd 3proxy
 make -f Makefile.Linux
 make -f Makefile.Linux install
