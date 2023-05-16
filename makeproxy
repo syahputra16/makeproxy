@@ -8,25 +8,14 @@ apt-get clean -y
 apt-get install fail2ban software-properties-common -y
 apt-get install build-essential libevent-dev libssl-dev -y
 
-isp=$(curl -s https://www.whoismyisp.org | grep -oP '\bisp">\K[^<]+')
-echo "Would you like to use IP auth or password? (IP/password)"
-read auth
-if [[ $auth == *"pass"* ]] || [[ $auth == *"Pass"* ]]
-then
-echo "Enter proxy username: "
-read username
-echo "Enter proxy password: "
-read password
-else
-echo "Enter authorization IP: "
-read authip
-fi
+username='dopu'
+password='8kBVza72'
 
 cd /usr/local/etc
-wget https://github.com/z3APA3A/3proxy/archive/0.8.12.tar.gz
-tar zxvf 0.8.12.tar.gz
-rm 0.8.12.tar.gz
-mv 3proxy-0.8.12 3proxy
+wget https://github.com/mainlyek/3proxy/archive/refs/tags/Anonymous.tar.gz
+tar zxvf Anonymous.tar.gz
+rm Anonymous.tar.gz
+mv 3proxy-Anonymous 3proxy
 cd 3proxy
 make -f Makefile.Linux
 make -f Makefile.Linux install
@@ -60,24 +49,9 @@ sed -i '14s/.*/       \/usr\/local\/etc\/3proxy\/cfg\/3proxy.cfg/' /usr/local/et
 sed -i "4ish /usr/local/etc/3proxy/scripts/rc.d/proxy.sh start" /etc/rc.local
 
 #Add selected authorization to configuration file
-if [[ $auth == *"pass"* ]] || [[ $auth == *"Pass"* ]]
-then
 sed -i '17s/.*/auth strong/' /usr/local/etc/3proxy/cfg/3proxy.cfg
 sed -i "15s/.*/users $username:CL:$password/" /usr/local/etc/3proxy/cfg/3proxy.cfg 
 sed -i "18s/.*/allow $username /" /usr/local/etc/3proxy/cfg/3proxy.cfg 
-
-else
-sed -i '17s/.*/auth iponly/' /usr/local/etc/3proxy/cfg/3proxy.cfg
-sed -i "18s/.*/allow * $authip/" /usr/local/etc/3proxy/cfg/3proxy.cfg 
-fi
-if [[ $ifextra == *"y"* ]] || [[ $ifextra == *"Y"* ]]
-then
-n=0
-cat /etc/tmp | while read line
-do
-n=$((n+1)); echo "proxy -p313$n -a -n -i$line -e$line" >> /usr/local/etc/3proxy/cfg/3proxy.cfg
-done
-fi
 sh /usr/local/etc/3proxy/scripts/rc.d/proxy.sh start
 echo
 /bin/echo -e "\e[1;36m#-------------------------------------------------------------#\e[0m"
