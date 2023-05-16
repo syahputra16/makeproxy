@@ -20,7 +20,7 @@ mv 3proxy-0.8.12 3proxy
 cd 3proxy
 echo '#define ANONYMOUS 1' >> ./src/3proxy.h
 make -f Makefile.Linux
-make -f Makefile.Linux installcd /etc 
+make -f Makefile.Linux install
 cd cfg
 
 echo "#!/usr/local/bin/3proxy
