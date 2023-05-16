@@ -22,7 +22,6 @@ make -f Makefile.Linux
 make -f Makefile.Linux install
 mkdir log
 cd cfg
-rm 3proxy.cfg.sample
 
 echo "#!/usr/local/bin/3proxy
 daemon
