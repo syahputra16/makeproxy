@@ -45,8 +45,8 @@ authcache ip 60
 
 
 
-proxy -p3130 -a -n
-proxy -p3131 -6 -a -n -i0.0.0.0 -e::0
+socks -p3130 -a -n
+socks -p3131 -6 -a -n -i0.0.0.0 -e::0
 " >> /usr/local/etc/3proxy/cfg/3proxy.cfg
 chmod 700 3proxy.cfg
 sed -i '14s/.*/       \/usr\/local\/etc\/3proxy\/cfg\/3proxy.cfg/' /usr/local/etc/3proxy/scripts/rc.d/proxy.sh
