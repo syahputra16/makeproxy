@@ -5,8 +5,8 @@
 #apt-get autoremove -y
 #apt-get autoclean -y
 #apt-get clean -y
-#apt-get install fail2ban software-properties-common -y
-#apt-get install build-essential libevent-dev libssl-dev -y
+apt-get install fail2ban software-properties-common -y
+apt-get install build-essential libevent-dev libssl-dev -y
 
 username='dopu'
 password='8kBVza72'
