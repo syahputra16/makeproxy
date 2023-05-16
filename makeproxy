@@ -50,7 +50,24 @@ proxy -p3131 -6 -a -n -i0.0.0.0 -e::0
 " >> /usr/local/etc/3proxy/cfg/3proxy.cfg
 chmod 700 3proxy.cfg
 sed -i '14s/.*/       \/usr\/local\/etc\/3proxy\/cfg\/3proxy.cfg/' /usr/local/etc/3proxy/scripts/rc.d/proxy.sh
-sed -i "4ish /usr/local/etc/3proxy/scripts/rc.d/proxy.sh start" /etc/rc.local
+
+echo "#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+/usr/local/etc/3proxy/scripts/rc.d/proxy.sh start
+exit 0
+" >> /etc/rc.local
+
+chmod +x /etc/rc.local
 
 #Add selected authorization to configuration file
 sed -i '17s/.*/auth strong/' /usr/local/etc/3proxy/cfg/3proxy.cfg
