@@ -1,13 +1,15 @@
 #!/bin/bash
 
-#apt-get update
-#apt-get upgrade -y
-#apt-get autoremove -y
-#apt-get autoclean -y
-#apt-get clean -y
-apt-get install net-tools
+sed "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+
+apt-get update
+apt-get upgrade -y
+apt-get autoremove -y
+apt-get autoclean -y
+apt-get clean -y
 apt-get install fail2ban software-properties-common -y
 apt-get install build-essential libevent-dev libssl-dev -y
+apt-get install net-tools
 
 username='dopu'
 password='8kBVza72'
