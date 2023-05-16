@@ -63,6 +63,6 @@ echo
 echo "Your new proxies are:"
 mainIP=$(curl -s http://ipinfo.io/ip)
 echo "IPV4 proxy"
-echo "$mainIP:3130:$username:$password"
+echo "$username:$password@$mainIP:3130"
 echo "IPV6 proxy"
-echo "$mainIP:3131:$username:$password"
+echo "$username:$password@$mainIP:3131"
