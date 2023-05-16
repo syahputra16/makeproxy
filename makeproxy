@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
 apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -yq upgrade
