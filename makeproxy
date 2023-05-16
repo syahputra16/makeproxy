@@ -13,10 +13,10 @@ username='dopu'
 password='8kBVza72'
 
 cd /usr/local/etc
-wget https://github.com/mainlyek/3proxy/archive/refs/tags/Anonymous.tar.gz
-tar zxvf Anonymous.tar.gz
-rm Anonymous.tar.gz
-mv 3proxy-Anonymous 3proxy
+wget https://github.com/mainlyek/3proxy/archive/refs/tags/0.9.4.tar.gz
+tar zxvf 0.9.4.tar.gz
+rm 0.9.4.tar.gz
+mv 3proxy-0.9.4 3proxy
 cd 3proxy
 make -f Makefile.Linux
 make -f Makefile.Linux install
