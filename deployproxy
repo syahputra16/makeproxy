@@ -2,4 +2,4 @@
 wget https://github.com/mainlyek/3proxy/files/11568077/3proxy_package.tar.gz
 cd /
 tar -xzvf /root/3proxy_package.tar.gz
-usr/local/bin/3proxy usr/local/etc/3proxy/cfg/3proxy.cfg
+/usr/local/bin/3proxy /usr/local/etc/3proxy/cfg/3proxy.cfg
